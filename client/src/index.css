@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: serif;
+}
+
+html {
+  font-family: serif;
+}
+
+body {
+  margin: 0;
+  background-color: #3f3f3f;
+}
+
+.slide img {
+  height: 450px;
+  object-fit: cover;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bgColor{
+  background-color: #232F3E;
+}
+
+.headerdiv{
+  width: 100%;
+  position:fixed;
+  top: 0px;
+  z-index: 1;
+}
+
+/* ///////////////////sidebar component///////////////// */
+
+
+main{
+  width: 100%;
+  padding: 20px;
+}
+.sidebar{
+  background: #000;
+  color: #fff;
+  height: 100vh;
+  width: 200px;
+  transition: all 0.5s;
+}
+.top_section{
+  display: flex;
+  align-items:center;
+  padding:20px 15px;
+}
+.logo{
+  font-size: 30px;
+  color: #fff;
+}
+.bars{
+  display: flex;
+  font-size: 25px;
+  margin-left: 50px;
+}
+.link{
+  display: flex;
+  color: #fff;
+  padding: 10px 15px;
+  gap: 15px;
+  transition: all 0.5s;
+}
+.link:hover{
+  background:lightskyblue;
+  color: rgb(31, 29, 76);
+  transition: all 0.5s;
+}
+.active{
+  background: lightskyblue;
+  color: #000;
+}
+.icon, .link_text{
+  font-size: 18px;
+  font-family: serif;
+}
+
+/* Area chart */
+.tooltip {
+  border-radius: 0.25rem;
+  background: #26313c;
+  color: #fff;
+  padding: 1rem;
+  box-shadow: 15px 30px 40px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
