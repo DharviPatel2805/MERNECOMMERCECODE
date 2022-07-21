@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs");
+const path = require("path");
 require("dotenv").config();
 
 const authRoutes = require("./routes/auth");
@@ -29,6 +30,19 @@ fs.readdirSync("./routes").map((r) =>
 //port
 const port = process.env.PORT || 8000;
 
+// // for deployment
+// const __dirname1 = path.resolve();
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname1, "/client/build")));
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+//   });
+// } else {
+//   app.get("/", (req, res) => {
+//     res.send("API is running successfully");
+//   });
+// }
+
 app.listen(port, () => {
-  console.log("server is running on port 8000");
+  console.log(`server is running on port ${port}`);
 });

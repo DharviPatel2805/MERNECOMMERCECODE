@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,13 +6,14 @@ import { useDispatch } from "react-redux";
 import { auth } from "./firebase";
 import { currentUser } from "./functions/auth";
 
-import Home from "./pages/Home";
-import Header from "./components/nav/Header";
-import SideDrawer from "./components/drawer/SideDrawer";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import CompleteRegister from "./pages/auth/CompleteRegister";
-import ForgotPassword from "./pages/auth/ForgotPassword";
+
+// import Home from "./pages/Home";
+// import Header from "./components/nav/Header";
+// import SideDrawer from "./components/drawer/SideDrawer";
+// import Login from "./pages/auth/Login";
+// import Register from "./pages/auth/Register";
+// import CompleteRegister from "./pages/auth/CompleteRegister";
+// import ForgotPassword from "./pages/auth/ForgotPassword";
 import {
   UserHistory,
   UserPassword,
@@ -34,13 +35,25 @@ import {
   UsersListRoute,
   DynamicContentRoute,
 } from "./components/routes/AdminRoute";
-import Product from "./pages/Product";
-import CategoryHome from "./pages/category/CategoryHome";
-import SubHome from "./pages/subs/SubHome";
-import Shop from "./pages/Shop";
-import Cart from "./pages/Cart";
-import AdminAnalytics from "./pages/admin/AdminAnalytics";
-import Adminnav from "./components/nav/Adminnav";
+// import Product from "./pages/Product";
+// import CategoryHome from "./pages/category/CategoryHome";
+// import SubHome from "./pages/subs/SubHome";
+// import Shop from "./pages/Shop";
+// import Cart from "./pages/Cart";
+
+const Home = lazy(() => import("./pages/Home"));
+const Header = lazy(() => import("./components/nav/Header")); 
+const SideDrawer = lazy(() => import("./components/drawer/SideDrawer"));
+const Login = lazy(() => import("./pages/auth/Login")); 
+const Register = lazy(() => import("./pages/auth/Register")); 
+const CompleteRegister = lazy(() => import("./pages/auth/CompleteRegister"));
+const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword")); 
+
+const Product = lazy(() => import("./pages/Product")); 
+const CategoryHome = lazy(() => import("./pages/category/CategoryHome")); 
+const SubHome = lazy(() => import("./pages/subs/SubHome"));
+const Shop = lazy(() => import("./pages/Shop")); 
+const Cart = lazy(() => import("./pages/Cart"));  
 
 function App() {
   const dispatch = useDispatch();
@@ -70,11 +83,15 @@ function App() {
     return () => unSubscribe();
   }, [dispatch]);
   return (
-    <div>
+    <Suspense fallback={
+      <div className="text-center p-4" >
+        MERN ECOMMERCE 
+      </div>
+    } >
       <Header />
       <SideDrawer />
       <ToastContainer />
-      
+
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
@@ -123,7 +140,7 @@ function App() {
         <Route exact path="/checkout" element={<UserCheckout />} />
         <Route exact path="/payment" element={<UserPayment />} />
       </Routes>
-    </div>
+    </Suspense>
   );
 }
 
