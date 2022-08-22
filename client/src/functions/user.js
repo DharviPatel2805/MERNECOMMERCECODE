@@ -40,6 +40,8 @@ export const saveUserAddress = async (address, authtoken) => {
   );
 };
 
+///////////////////////////coupon//////////////////////////////
+
 export const applyCoupon = async (coupon, authtoken) => {
   return await axios.post(
     "http://localhost:8000/api/user/cart/coupon",
@@ -52,9 +54,55 @@ export const applyCoupon = async (coupon, authtoken) => {
   );
 };
 
+///////////////////////////credit point//////////////////////////////
+export const getUserCredit = async (authtoken) => {
+  return await axios.get("http://localhost:8000/api/user/cart/credit", {
+    headers: {
+      authtoken,
+    },
+  });
+};
+
+export const applyCredit = async (point, authtoken) => {
+  return await axios.post(
+    "http://localhost:8000/api/user/cart/credit",
+    { point },
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+};
+
+export const addCredit = async (point, authtoken) => {
+  return await axios.post(
+    "http://localhost:8000/api/user/cart/addcredit",
+    { point },
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+};
+
+export const updateCredit = async (leftpoint, appliedCredit, authtoken) => {
+  return await axios.post(
+    "http://localhost:8000/api/user/cart/updatecredit",
+    { leftpoint, appliedCredit },
+    {
+      headers: {
+        authtoken,
+      },
+    }
+  );
+};
+
 ///////////////////////////ORDER//////////////////////////////
 
-export const createOrder = async (stripeResponse, authtoken) => {      ///////stripe/////////
+export const createOrder = async (stripeResponse, authtoken) => {
+  ///////stripe/////////
   return await axios.post(
     "http://localhost:8000/api/user/order",
     { stripeResponse },
@@ -74,10 +122,11 @@ export const listOrders = async (authtoken) => {
   });
 };
 
-export const createCashOrder = async (authtoken, couponApplied) => {    ////////COD//////////////
+export const createCashOrder = async (authtoken, couponApplied, credit) => {
+  ////////COD//////////////
   return await axios.post(
     "http://localhost:8000/api/user/cash-order",
-    { couponApplied },
+    { couponApplied, credit },
     {
       headers: {
         authtoken,
@@ -121,5 +170,7 @@ export const addToWishlist = async (productId, authtoken) => {
 
 ///////////////////filter order///////////////////
 export const filterOrderByStaus = async (orderStatus) => {
-  return await axios.get(`http://localhost:8000/api/user/orders/${orderStatus}`);
+  return await axios.get(
+    `http://localhost:8000/api/user/orders/${orderStatus}`
+  );
 };

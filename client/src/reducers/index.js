@@ -6,6 +6,8 @@ import { drawerReducer } from "./drawerReducer";
 import { couponReducer } from "./couponReducer";
 import { adminReducer } from "./adminReducer";
 import { sidebarReducer } from "./sidebarReducer";
+import { creditPointReducer } from "./creditPointReducer";
+import { applyRefReducer } from "./applyRefReducer";
 
 
 const rootReducer = combineReducers({
@@ -16,6 +18,8 @@ const rootReducer = combineReducers({
   coupon: couponReducer,
   isAdmin: adminReducer,
   sidebar: sidebarReducer,
+  credit: creditPointReducer,
+  refApplied: applyRefReducer,
 });
 
 export default rootReducer;

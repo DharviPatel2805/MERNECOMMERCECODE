@@ -122,7 +122,56 @@ exports.applyCouponToUserCart = async (req, res) => {
   res.json(totalAfterDiscount);
 };
 
+////////////////credit point////////////////////////////////////
+
+exports.getUserCredit = async (req, res) => {
+  const user = await User.findOne({ email: req.user.email }).exec();
+  const creditPoint = user.credit;
+  console.log("credit point", creditPoint);
+  res.json(creditPoint);
+};
+
+exports.applyCreditPointToUserCart = async (req, res) => {
+  const user = await User.findOne({ email: req.user.email }).exec();
+  const { point } = req.body;
+
+  const { cartTotal } = await Cart.findOne({
+    orderedBy: user._id,
+  })
+    .populate("products.product")
+    .exec();
+
+  let totalAfterDiscount = (cartTotal - point * 11).toFixed(2);
+  console.log("total After discount ", totalAfterDiscount);
+
+  Cart.findOneAndUpdate(
+    { orderedBy: user._id },
+    { totalAfterDiscount },
+    { new: true }
+  ).exec();
+
+  res.json(totalAfterDiscount);
+};
+
+exports.updateCredit = async (req, res) => {
+  const { leftpoint, appliedCredit } = req.body;
+  let credit = leftpoint;
+
+  const user = await User.findOne({ email: req.user.email }).exec();
+
+  let userCart = await Cart.findOne({ orderedBy: user._id }).exec();
+
+  if (appliedCredit && userCart.totalAfterDiscount > 555) {
+    credit = credit + 1;
+  }
+
+  User.findOneAndUpdate({ email: req.user.email }, { credit }).exec();
+
+  res.json({ ok: true });
+};
+
 ////////////////ORDER////////////////////////////////////
+
 //stripe>>>>>>>>>>>
 exports.createOrder = async (req, res) => {
   const { paymentIntent } = req.body.stripeResponse;
@@ -167,7 +216,7 @@ exports.listOrders = async (req, res) => {
 
 ///////COD>>>>>>>>>>>>>>>>>>>>.
 exports.createCashOrder = async (req, res) => {
-  const { couponApplied } = req.body;
+  const { couponApplied , credit} = req.body;
 
   const user = await User.findOne({ email: req.user.email }).exec();
 
@@ -177,7 +226,11 @@ exports.createCashOrder = async (req, res) => {
 
   if (couponApplied && userCart.totalAfterDiscount) {
     finalAmount = userCart.totalAfterDiscount * 100;
-  } else {
+  } 
+  else if(credit && userCart.totalAfterDiscount){
+    finalAmount = userCart.totalAfterDiscount * 100;
+  }
+  else {
     finalAmount = userCart.cartTotal * 100;
   }
 
@@ -255,8 +308,6 @@ exports.removeFromWishlist = async (req, res) => {
   res.json({ ok: true });
 };
 
-
-
 //////////////////////////order filter///////////////
 exports.filterOrderByStaus = async (req, res) => {
   const { orderStatus } = req.params;
@@ -264,6 +315,5 @@ exports.filterOrderByStaus = async (req, res) => {
     .populate("products.product")
     .exec();
 
-  res.json(filterOrders);  
+  res.json(filterOrders);
 };
-

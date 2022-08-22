@@ -12,6 +12,7 @@
     "@syncfusion/ej2-react-calendars": "^20.2.38",
     "@syncfusion/ej2-react-charts": "^20.2.36",
     "@syncfusion/ej2-react-schedule": "^20.2.38",
+    "@tawk.to/tawk-messenger-react": "^2.0.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
@@ -41,6 +42,7 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "tailwindcss": "^3.1.5",
+    "tawkto-react": "^3.0.1",
     "typewriter-effect": "^2.18.2",
     "web-vitals": "^0.2.4",
     "xlsx": "^0.18.5"

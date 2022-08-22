@@ -13,7 +13,7 @@ import payment from "../../images/payment.jpg";
 
 const StripeCheckout = () => {
   const dispatch = useDispatch();
-  const { user, coupon } = useSelector((state) => ({ ...state }));
+  const { user, coupon, credit } = useSelector((state) => ({ ...state }));
 
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -29,7 +29,7 @@ const StripeCheckout = () => {
   const elements = useElements();
 
   useEffect(() => {
-    createPaymentIntent(user.token, coupon).then((res) => {
+    createPaymentIntent(user.token, coupon, credit).then((res) => {
       console.log("create payment intent", res.data);
       setClientSecret(res.data.clientSecret);
 
@@ -131,6 +131,13 @@ const StripeCheckout = () => {
             </p>
           ) : (
             <p className="alert alert-danger p-3">No Coupon Applied</p>
+          )}
+          {credit ? (
+            <p className="alert alert-success">
+              {`Total After Credit Points Discount: $${totalAfterDiscount}`}
+            </p>
+          ) : (
+            <p className="alert alert-danger p-3">No Credit Points Applied</p>
           )}
         </div>
       )}

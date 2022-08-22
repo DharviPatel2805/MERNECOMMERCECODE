@@ -34,4 +34,51 @@ exports.currentUser = async (req, res) => {
 exports.listUsers = async (req, res) => {
   const list = await User.find().exec();
   res.json(list);
-}
+};
+
+exports.checkRefEmail = async (req, res) => {
+  const { email } = req.body;
+  const findUser = await User.findOne({ email }).exec();
+  if (findUser && findUser.refNumber < 5) {
+    res.json({ ok: true });
+  } else {
+    res.json({
+      err: "Invalid Ref Email",
+    });
+  }
+};
+
+exports.applyRefEmail = async (req, res) => {
+  const { email } = req.body;
+  const findUser = await User.findOne({ email }).exec();
+  if (findUser && findUser.refNumber < 5) {
+    let credit = findUser.credit + 5;
+    let refNumber = findUser.refNumber + 1 ;
+    User.findOneAndUpdate({ email }, { credit, refNumber }).exec();
+  } else {
+    res.json({
+      err: "Invalid Email",
+    });
+    return;
+  }
+
+  res.json({ ok: true });
+};
+
+exports.addCreditToNewUser= async (req, res) => {
+  const { email } = req.body;
+  const findUser = await User.findOne({ email }).exec();
+  if (findUser) {
+    let credit = findUser.credit + 5;
+    User.findOneAndUpdate({ email }, { credit }).exec();
+  } else {
+    res.json({
+      err: "Invalid Email",
+    });
+    return;
+  }
+
+  res.json({ ok: true });
+};
+
+

@@ -22,6 +22,15 @@ const userSchema = new mongoose.Schema(
         type: ObjectId,
         ref: "Product",
     }],
+    credit: {
+      type: Number,
+      default: 5,
+    },
+    refNumber: {
+      type: Number,
+      default: 0,
+      max: 5,
+    },
   },
   { timestamps: true }
 );

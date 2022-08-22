@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { auth } from "./firebase";
 import { currentUser } from "./functions/auth";
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 
 
 // import Home from "./pages/Home";
@@ -54,6 +55,9 @@ const CategoryHome = lazy(() => import("./pages/category/CategoryHome"));
 const SubHome = lazy(() => import("./pages/subs/SubHome"));
 const Shop = lazy(() => import("./pages/Shop")); 
 const Cart = lazy(() => import("./pages/Cart"));  
+
+const property_id = "62fa977c54f06e12d88ec8f4";
+const widgetId = "1gahdvg9a";
 
 function App() {
   const dispatch = useDispatch();
@@ -140,6 +144,9 @@ function App() {
         <Route exact path="/checkout" element={<UserCheckout />} />
         <Route exact path="/payment" element={<UserPayment />} />
       </Routes>
+      <TawkMessengerReact
+                propertyId={property_id}
+                widgetId={widgetId}/>
     </Suspense>
   );
 }

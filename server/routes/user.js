@@ -11,6 +11,9 @@ const {
   emptyCart,
   saveAddress,
   applyCouponToUserCart,
+  getUserCredit,
+  applyCreditPointToUserCart,
+  updateCredit,
   createOrder,
   listOrders,
   addToWishlist,
@@ -27,6 +30,12 @@ router.post("/user/address", authCheck, saveAddress);
 
 //coupon
 router.post("/user/cart/coupon", authCheck, applyCouponToUserCart);
+
+//credit point
+router.get("/user/cart/credit", authCheck, getUserCredit);
+router.post("/user/cart/credit", authCheck, applyCreditPointToUserCart);
+router.post("/user/cart/updatecredit", authCheck, updateCredit);
+
 
 //orders
 router.post("/user/order", authCheck, createOrder); //stripe

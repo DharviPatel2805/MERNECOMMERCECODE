@@ -12,6 +12,13 @@ function UserNav() {
             <hr className="border-2 border-top border-dark " />
           </Link>
         </li>
+
+        <li className="nav-item text-dark ">
+          <Link to="/checkout" className="nav-link text-dark h4 font-weight-bold ">
+            Cart  Checkout
+            <hr className="border-2 border-top border-dark " />
+          </Link>
+        </li>
       </ul>
     </nav>
   );

@@ -84,6 +84,7 @@ const Cart = () => {
           <hr className="bg-info border-2 border-top border-info " />
           total: <b> ${getTotal()}</b>
           <hr className="bg-info border-2 border-top border-info " />
+          <br/>
           {user ? (
             <button
               className="btn btn-info"
