@@ -13,10 +13,13 @@ Master MERN Stack Web Development building Ultimate E-commerce app with React Re
 
 - Login Registration System
 - Login with email/password and social login (Google)
-- Admin dashboard and order management system and CMS(conotent management system)
+- Admin dashboard and order management system 
+- CMS(conotent management system)
 - Order and sales tracking analysis
 - Products CRUD with advance features including categories, sub-categories, multiple image uploads etc
 - Plenty of advance searching and filtering options
+- Chatbot for communication between user and admin
+- Loyalty Program (offers, rewards, discounts)
 - Star rating system
 - Cart functionality with both backend/frontend implementation
 - Checkout with stripe for credit card payments
@@ -46,6 +49,10 @@ REACT_APP_STRIPE_KEY =
 STRIPE_SECRET = 
 CLOUDINARY_API_KEY = 
 CLOUDINARY_API_SECRET = 
-DATABASE='mongodb://localhost:27017/ecomm'
+DATABASE='mongodb://localhost:270
+
+https://user-images.githubusercontent.com/83693139/185963713-ffb098b2-3b03-4e1d-9c83-347852726843.mp4
+
+17/ecomm'
 ## Demo
 ![demo!](https://youtu.be/nY6_JuH0-uE)
