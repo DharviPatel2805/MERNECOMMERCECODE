@@ -46,20 +46,16 @@ Make Sure to Create a .env file and add appropriate variables in order to use th
 ### Essential Variables (Client) for stripe configuration
 REACT_APP_STRIPE_KEY = 
 ### Essential Variables (Admin) for firebase configuration
-STRIPE_SECRET = 
-CLOUDINARY_API_KEY = 
-CLOUDINARY_API_SECRET = 
-DATABASE='mongodb://localhost:270
+STRIPE_SECRET = <br/>
+CLOUDINARY_API_KEY = <br/>
+CLOUDINARY_API_SECRET = <br/>
+DATABASE='mongodb://localhost:27017/
 
 
 
 https://user-images.githubusercontent.com/83693139/185964303-1e1b0e7a-51ae-4781-a76c-49272a79515a.mp4
 
-
-
 https://user-images.githubusercontent.com/83693139/185965559-3da79ce8-8a17-49d6-99c6-2b5c67aa1abe.mp4
-
-
 
 https://user-images.githubusercontent.com/83693139/185971640-f198667a-08bd-4b04-b320-a9873482111f.mp4
 
