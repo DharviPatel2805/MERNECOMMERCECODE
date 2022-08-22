@@ -61,14 +61,9 @@ https://user-images.githubusercontent.com/83693139/185965559-3da79ce8-8a17-49d6-
 
 
 
-https://user-images.githubusercontent.com/83693139/185969293-f0d54230-28f0-41fc-a6c8-098419dffdc3.mp4
-
-
-https://user-images.githubusercontent.com/83693139/185971211-eeb26a50-f524-401d-aad0-45650b3540b8.mp4
+https://user-images.githubusercontent.com/83693139/185971640-f198667a-08bd-4b04-b320-a9873482111f.mp4
 
 
 
-
-17/ecomm'
 ## Demo
 ![demo!](https://youtu.be/nY6_JuH0-uE)
